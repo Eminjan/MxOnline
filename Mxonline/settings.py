@@ -161,14 +161,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 #STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
-# 配置Redis
+# 配置Redis缓存
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/1",
+        "TIMEOUT":90,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "MAX_ENTRIES":500,
         }
     }
 }
